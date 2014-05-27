@@ -1,6 +1,5 @@
 class window.PDJSobj
-  @version = "PDJS-0.3.1"
-  
+  @version = "PDJS-0.4.5"
   logg: (str) ->
     if(this.logging)
       console.log(str)  
@@ -106,6 +105,8 @@ class window.PDJSobj
     params.data = params.data || {}
     params.data.service_key = params.data.service_key || params.service_key || this.logg("No service key")
     params.data.event_type = params.data.event_type || params.event_type || "trigger"
+    params.data.client = params.data.client || params.client if params.client
+    params.data.client_url = params.data.client_url || params.client_url if params.client_url
     params.data.description = params.data.description || params.description || "No description provided"
     params.data.details = params.data.details || params.details || {}
     params.data = JSON.stringify(params.data)
@@ -129,3 +130,4 @@ class window.PDJSobj
   resolve: (params = {}) ->
     params.event_type = "resolve"
     this.event(params)
+
